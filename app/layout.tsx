@@ -5,7 +5,7 @@ import Image from 'next/image'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Stacker Agent Signup',
+  title: 'Stacker Onboarding Assistant',
   description: 'Experience our AI agent platform',
 }
 
@@ -25,8 +25,7 @@ export default function RootLayout({
             {children}
           </main>
           <footer className="p-4 text-center text-sm text-gray-500">
-            <p>© 2024 Stacker. All rights reserved.</p>
-            <p>Experience the future of AI agents.</p>
+            <p>© 2024 Stacker</p>
           </footer>
         </div>
       </body>
