@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-import { ArrowUp as SendIcon, X as StopIcon } from "lucide-react";
+import { ArrowUp as SendIcon } from "lucide-react";
 
 interface InputFormProps {
   input: string;
@@ -37,11 +37,9 @@ export function InputForm({
               disabled={isLoading}
               className="rounded-full w-10 h-10 p-0 m-0"
             >
-              {isLoading ? (
-                <StopIcon />
-              ) : (
+
                 <SendIcon />
-              )}
+
             </Button>
           </div>
         </div>
