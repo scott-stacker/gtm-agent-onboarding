@@ -138,7 +138,9 @@ export function Chat() {
 
   const renderBookingMessage = (message: any) => {
     //remove the __ suffix and split the email
-    const email = message.content.split(":")[1].replace("__", "");
+    const email = message.content?.includes(":") 
+      ? message.content.split(":")[1]?.replace("__", "")?.trim() 
+      : null;
 
     return (
       <div className="flex-col" key={message.id}>
