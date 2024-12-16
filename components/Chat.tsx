@@ -169,7 +169,7 @@ export function Chat() {
   const renderMessage = (message: any) => {
     if (message.role === "system") {
       return null;
-    } else if (message.content.startsWith("__booking-email:")) {
+    } else if (message.content.startsWith("__b")) {
       return renderBookingMessage(message);
     } else if (message.role === "assistant") {
       return renderAssistantMessage(message);
