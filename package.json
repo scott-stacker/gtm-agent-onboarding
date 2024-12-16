@@ -23,6 +23,7 @@
     "next": "15.1.0",
     "openai-edge": "^1.2.2",
     "react": "^19.0.0",
+    "react-calendly": "^4.3.1",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7"

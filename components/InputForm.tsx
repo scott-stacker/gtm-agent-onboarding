@@ -24,7 +24,7 @@ export function InputForm({
         onSubmit={handleSubmit}
         className="w-full bg-gray-100 rounded-full p-2"
       >
-        <div className="flex flex-col sm:flex-row pl-2 space-y-2 sm:space-y-0 sm:space-x-2">
+        <div className="flex flex-col items-center sm:flex-row pl-2 space-y-2 sm:space-y-0 sm:space-x-2">
           <Input
             placeholder="Message Stacker Onboarding Assistant"
             value={input}
