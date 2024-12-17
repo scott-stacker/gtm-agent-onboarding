@@ -3,18 +3,18 @@ import { z } from "zod";
 import { LangGraphRunnableConfig } from "@langchain/langgraph";
 
 const headers = {
-    "x-stack-id": "app785vwedw46e3bx8",
-    "x-integration-key": process.env.STACKER_INTEGRATION_KEY || '',
+    "x-stack-id": "app69tukdg6px5eah5",
+    "x-integration-key": "55883952-629d-4b65-a0a2-77f94157ff41",
     "Content-Type": "application/json",
   };
 
 async function setEmail(email: string, thread_id: string) {
 
-    const url = 'https://api.go.stackerhq.com/api/external/objects/object.custom.leads/records/'
+    const url = 'https://api.go.stackerhq.com/api/external/objects/object.custom.customer_chats/records/'
 
     const body = {
-        leads__email: email,
-        leads__thread_id: thread_id,
+        customer_chats__email: email,
+        customer_chats__thread_id: thread_id,
     }
 
     const response = await fetch(url, {
@@ -75,10 +75,10 @@ export const setUseCaseSummary = tool(async (input: {summary: string}, config: L
 
     const thread_id = config.configurable?.thread_id;
 
-    const url = 'https://api.go.stackerhq.com/api/external/objects/object.custom.leads/records/' + thread_id + "/"
+    const url = 'https://api.go.stackerhq.com/api/external/objects/object.custom.customer_chats/records/' + thread_id + "/"
 
     const body = {
-        leads__use_case_summary: input.summary,
+        customer_chats__description: input.summary,
 
     }
 
