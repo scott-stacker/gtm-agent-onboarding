@@ -26,7 +26,7 @@ export function InputForm({
       >
         <div className="flex items-center">
           <Input
-            placeholder="Message Stacker Onboarding Assistant"
+            placeholder="Message Harrisons Agent"
             value={input}
             onChange={handleInputChange}
             className="flex-grow rounded-lg border-none bg-transparent shadow-none"

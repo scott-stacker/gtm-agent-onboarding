@@ -50,7 +50,7 @@ export const setUserEmail = tool(async (input, config: LangGraphRunnableConfig) 
 
     }
 
-    if (validation_result.status === 'invalid' || validation_result.webmail || validation_result.disposable) {
+    if (validation_result.status === 'invalid' ) {
         return {
             email_set: false,
             validation_result: validation_result,

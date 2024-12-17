@@ -59,8 +59,8 @@ export function Chat() {
       <div key={message.id} className="flex justify-start my-4">
         <div className="flex-shrink-0 mr-4">
           <Image
-            src="/stacker_chat_avatar.png"
-            alt="Stacker Agent"
+            src="/harrisons_agent.png"
+            alt="Harrisons Agent"
             width={30}
             height={30}
             className="rounded-full"
@@ -68,7 +68,7 @@ export function Chat() {
         </div>
         <div className={"max-w-[70%] bg-white text-black"}>
           <div className="flex items-center mb-1">
-            <span className="text-gray-500">Onboarding Assistant</span>
+            <span className="text-gray-500">Harrisons Agent</span>
           </div>
           <p className="whitespace-pre-wrap">{message.content}</p>
         </div>
@@ -142,8 +142,8 @@ export function Chat() {
         <div className="flex justify-start mb-4">
           <div className="flex-shrink-0 mr-4">
             <Image
-              src="/stacker_chat_avatar.png"
-              alt="Stacker Agent"
+              src="/harrisons_agent.png"
+              alt="Harrisons Agent"
               width={30}
               height={30}
               className="rounded-full"
@@ -152,7 +152,7 @@ export function Chat() {
     
           <div className={"max-w-[70%] bg-white text-black"}>
             <div className="flex items-center mb-1">
-              <span className="text-gray-500">Onboarding Assistant</span>
+              <span className="text-gray-500">Harrisons Agent</span>
             </div>
             <p className="whitespace-pre-wrap">Great, please select a time for your onboarding call:</p>
           </div>
@@ -193,8 +193,8 @@ export function Chat() {
                 <div className="flex items-center justify-start mb-4">
                   <div className="flex-shrink-0 mr-4">
                     <Image
-                      src="/stacker_chat_avatar.png"
-                      alt="Stacker Agent"
+                      src="/harrisons_agent.png"
+                      alt="Harrisons Agent"
                       width={30}
                       height={30}
                       className="rounded-full"
