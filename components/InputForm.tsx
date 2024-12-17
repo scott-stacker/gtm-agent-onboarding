@@ -22,9 +22,9 @@ export function InputForm({
     <div className="px-0">
       <form
         onSubmit={handleSubmit}
-        className="w-full bg-gray-100 rounded-full p-2"
+        className="w-full bg-gray-100 rounded-3xl p-2"
       >
-        <div className="flex flex-col items-center sm:flex-row pl-2 space-y-2 sm:space-y-0 sm:space-x-2">
+        <div className="flex items-center">
           <Input
             placeholder="Message Stacker Onboarding Assistant"
             value={input}
@@ -35,7 +35,7 @@ export function InputForm({
             <Button
               type="submit"
               disabled={isLoading}
-              className="rounded-full w-10 h-10 p-0 m-0"
+              className="rounded-full w-8 h-8 p-0 m-0"
             >
 
                 <SendIcon />

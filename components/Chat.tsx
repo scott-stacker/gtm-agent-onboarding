@@ -33,11 +33,6 @@ export function Chat() {
           role: "assistant",
           content: "Hi there, please share your email to get started!",
         },
-        // {
-        //   id: "2",
-        //   role: "assistant",
-        //   content: "__booking__",
-        // },
       ],
       body: {
         thread_id: thread_id,
@@ -61,7 +56,7 @@ export function Chat() {
 
   const renderAssistantMessage = (message: any) => {
     return (
-      <div key={message.id} className="flex justify-start mb-4">
+      <div key={message.id} className="flex justify-start my-4">
         <div className="flex-shrink-0 mr-4">
           <Image
             src="/stacker_chat_avatar.png"
@@ -83,8 +78,8 @@ export function Chat() {
 
   const renderUserMessage = (message: any) => {
     return (
-      <div key={message.id} className="flex justify-end mb-4">
-        <div className="max-w-[70%] bg-gray-200 text-black py-2 px-4 rounded-full">
+      <div key={message.id} className="flex justify-end my-4">
+        <div className="max-w-[70%] bg-gray-200 text-black py-3 px-4 rounded-2xl">
           <p>{message.content}</p>
         </div>
       </div>
@@ -99,14 +94,14 @@ export function Chat() {
 
   const renderCalendly = (meeting_booked: boolean, email: string) => {
     return (
-      <div className="flex pl-12 pb-4">
+      <div className="flex pl-0 pb-4 sm:pl-12">
         <div 
           className={`
             flex items-center border border-gray-200 rounded-lg overflow-hidden
             transition-all duration-500 ease-in-out
             ${meeting_booked 
-              ? 'w-[500px] h-[60px] p-4' 
-              : 'w-[500px] h-[610px]'
+              ? 'w-full max-w-[500px] h-[60px] p-4' 
+              : 'w-full max-w-[500px] h-[610px]'
             }
           `} 
           key="calendly"
@@ -188,10 +183,10 @@ export function Chat() {
   }, [messages]);
 
   return (
-    <div className="flex flex-col flex-1 min-h-0">
+    <div className="flex flex-col flex-1 min-h-0 px-4 pb-4 sm:pb-8">
       <ScrollArea.Root className="relative flex-1 min-h-0">
-        <ScrollArea.Viewport ref={viewportRef} className="absolute inset-0">
-          <div className="p-4">
+        <ScrollArea.Viewport ref={viewportRef} className="absolute inset-0 px-0 sm:px-4">
+          <div>
             {messages.map((message) => renderMessage(message))}
             {isLoading &&
               messages[messages.length - 1]?.role !== "assistant" && (
