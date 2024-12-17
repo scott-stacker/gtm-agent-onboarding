@@ -71,7 +71,7 @@ export const setUserEmail = tool(async (input, config: LangGraphRunnableConfig) 
   })
 });
 
-export const setUseCaseSummary = tool(async (input: {summary: string}, config: LangGraphRunnableConfig) => {
+export const setCustomerProjectSummary = tool(async (input: {summary: string}, config: LangGraphRunnableConfig) => {
 
     const thread_id = config.configurable?.thread_id;
 
@@ -99,11 +99,11 @@ export const setUseCaseSummary = tool(async (input: {summary: string}, config: L
     }
 
 }, {
-    name: 'set_use_case_summary',
-    description: 'Save a brief use case summary in the CRM for the current lead.',
+    name: 'set_customer_project_summary',
+    description: 'Save a brief summary of the user needs for their solar project.',
     schema: z.object({
         summary: z.string().describe("50-100 words describing the use case."),
     })
 });
 
-export const tools = [setUserEmail, setUseCaseSummary]; 
+export const tools = [setUserEmail, setCustomerProjectSummary]; 
