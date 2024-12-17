@@ -4,7 +4,6 @@ import { useState, useRef, useEffect } from "react";
 import { useChat } from "ai/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-// import { ScrollArea } from "@/components/ui/scroll-a rea";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import Image from "next/image";
 import { InputForm } from "@/components/InputForm";
@@ -54,17 +53,23 @@ export function Chat() {
     ]);
   };
 
+  const renderAgentImage = () => {
+    return (
+      <Image
+        src="/harrisons_agent.png"
+        alt="Harrisons Agent"
+        width={30}
+        height={30}
+        className="rounded-lg"
+      />
+    );
+  };
+
   const renderAssistantMessage = (message: any) => {
     return (
       <div key={message.id} className="flex justify-start my-4">
         <div className="flex-shrink-0 mr-4">
-          <Image
-            src="/harrisons_agent.png"
-            alt="Harrisons Agent"
-            width={30}
-            height={30}
-            className="rounded-full"
-          />
+          {renderAgentImage()}
         </div>
         <div className={"max-w-[70%] bg-white text-black"}>
           <div className="flex items-center mb-1">
@@ -141,13 +146,7 @@ export function Chat() {
       <div className="flex-col" key={message.id}>
         <div className="flex justify-start mb-4">
           <div className="flex-shrink-0 mr-4">
-            <Image
-              src="/harrisons_agent.png"
-              alt="Harrisons Agent"
-              width={30}
-              height={30}
-              className="rounded-full"
-            />
+            {renderAgentImage()}
           </div>
     
           <div className={"max-w-[70%] bg-white text-black"}>
@@ -192,13 +191,7 @@ export function Chat() {
               messages[messages.length - 1]?.role !== "assistant" && (
                 <div className="flex items-center justify-start mb-4">
                   <div className="flex-shrink-0 mr-4">
-                    <Image
-                      src="/harrisons_agent.png"
-                      alt="Harrisons Agent"
-                      width={30}
-                      height={30}
-                      className="rounded-full"
-                    />
+                    {renderAgentImage()}
                   </div>
                   <div className="flex items-center">
                     <p className="thinking-gradient">Thinking...</p>

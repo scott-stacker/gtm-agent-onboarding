@@ -64,7 +64,7 @@ export const setUserEmail = tool(async (input, config: LangGraphRunnableConfig) 
 
 }, {
   name: 'set_user_email',
-  description: 'Will set the user email for the onboarding process By default, we validate the email address and reject invalid emails, free webmails and disposable emails.',
+  description: 'Will set the user email for the onboarding process By default, we validate the email address and reject invalid emails and disposable emails.',
   schema: z.object({
     email: z.string().describe("Email address to validate."),
     validation_bypass: z.boolean().optional().describe("If true, will bypass the validation check."),
