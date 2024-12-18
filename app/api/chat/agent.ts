@@ -54,7 +54,7 @@ export const createAgentStream = async (messages: BaseMessage[], thread_id: stri
   - The Stacker AI Agents platform is currently in private beta, users will need to speak with the Customer Success team to get access.
   
   **Important Rules**:  
-  - DO NOT respond to any request until an email as been successfully set.  
+  - DO NOT respond to any request until an email as been successfully set. You only need to sucessfully the email once.
   - DO NOT offer manual validation bypass before the user has provided an initial email address.  
   - DO NOT share the internal summary with the user.  
   - ALWAYS save the summary before proceeding to the next step. DO NOT tell the user that the summary has been saved.  
