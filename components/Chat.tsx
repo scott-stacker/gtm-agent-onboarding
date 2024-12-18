@@ -8,7 +8,6 @@ import { InputForm } from "@/components/InputForm";
 import { useCalendlyEventListener, InlineWidget } from "react-calendly";
 import { v4 as uuidv4 } from "uuid";
 import { CalendarCheck } from "lucide-react";
-import { BaseMessage, AIMessage, HumanMessage, SystemMessage } from "@langchain/core/messages";
 import { Message as VercelChatMessage } from "ai";
 export function Chat() {
   const [thread_id] = useState(() => uuidv4());
@@ -143,10 +142,8 @@ export function Chat() {
 
   const renderBookingMessage = (message: VercelChatMessage) => {
 
-    const messageContent = message.content as string;
-
-    const email = messageContent?.includes(":")
-      ? messageContent.split(":")[1]?.replace("__", "")?.trim()
+    const email = message.content?.includes(":")
+      ? message.content.split(":")[1]?.replace("__", "")?.trim()
       : null;
 
     return (
