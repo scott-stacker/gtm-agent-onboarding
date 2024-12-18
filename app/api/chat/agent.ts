@@ -1,10 +1,9 @@
 import { ChatOpenAI } from '@langchain/openai';
 import { LangChainAdapter } from 'ai';
-import { AIMessage, BaseMessage, HumanMessage, SystemMessage } from "@langchain/core/messages";
+import { AIMessage, BaseMessage, SystemMessage } from "@langchain/core/messages";
 import { StateGraph } from "@langchain/langgraph";
 import { MemorySaver, Annotation, messagesStateReducer } from "@langchain/langgraph";
 import { ToolNode } from "@langchain/langgraph/prebuilt";
-import { Message as VercelChatMessage } from "ai";
 import { tools as importedTools } from "./tools";
 
 const StateAnnotation = Annotation.Root({
