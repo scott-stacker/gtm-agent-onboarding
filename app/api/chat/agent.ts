@@ -7,19 +7,6 @@ import { ToolNode } from "@langchain/langgraph/prebuilt";
 import { Message as VercelChatMessage } from "ai";
 import { tools as importedTools } from "./tools";
 
-const formatMessage = (message: VercelChatMessage) => {
-    if (message.role === 'assistant') {
-      return new AIMessage(message.content);
-    }
-    else if (message.role === 'system') {
-      return new SystemMessage(message.content);
-    }
-    else {
-      return new HumanMessage(message.content);
-    }
-  };
-
-
 const StateAnnotation = Annotation.Root({
     messages: Annotation<BaseMessage[]>({
       reducer: messagesStateReducer,
@@ -56,7 +43,7 @@ export const createAgentStream = async (messages: BaseMessage[], thread_id: stri
       "After that, tell them our Customer Success team will be in touch and wish them a great day. DO NOT engage with any additional requests under any circumstances."
     );
 
-    const formattedMessages = [systemPrompt, ...messages.map(formatMessage)];
+    const formattedMessages = [systemPrompt, ...messages];
 
     const model = new ChatOpenAI({
         modelName: 'gpt-4o',
