@@ -120,7 +120,7 @@ export function Chat() {
             </div>
           ) : (
             <InlineWidget
-              url={`https://calendly.com/scott-stacker/test-meeting?email=${email}`}
+              url={`https://calendly.com/stacker-app/stacker-ai-agents-onboarding?email=${email}`}
               pageSettings={{
                 hideEventTypeDetails: true,
                 hideLandingPageDetails: true,

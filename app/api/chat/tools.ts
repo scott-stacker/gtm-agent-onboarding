@@ -3,18 +3,18 @@ import { z } from "zod";
 import { LangGraphRunnableConfig } from "@langchain/langgraph";
 
 const headers = {
-  "x-stack-id": "app785vwedw46e3bx8",
+  "x-stack-id": "app6t3fec544arhvui",
   "x-integration-key": process.env.STACKER_INTEGRATION_KEY || "",
   "Content-Type": "application/json",
 };
 
 async function setEmail(email: string, thread_id: string) {
   const url =
-    "https://api.go.stackerhq.com/api/external/objects/object.custom.leads/records/";
+    "https://api.go.stackerhq.com/api/external/objects/object.custom.ai_onboarding_threads/records/";
 
   const body = {
-    leads__email: email,
-    leads__thread_id: thread_id,
+    ai_onboarding_threads__email: email,
+    ai_onboarding_threads__thread_id: thread_id,
   };
 
   const response = await fetch(url, {
@@ -84,12 +84,12 @@ export const saveUseCaseSummary = tool(
     const thread_id = config.configurable?.thread_id;
 
     const url =
-      "https://api.go.stackerhq.com/api/external/objects/object.custom.leads/records/" +
+      "https://api.go.stackerhq.com/api/external/objects/object.custom.ai_onboarding_threads/records/" +
       thread_id +
       "/";
 
     const body = {
-      leads__use_case_summary: input.summary,
+      ai_onboarding_threads__use_case_summary: input.summary,
     };
 
     const response = await fetch(url, {

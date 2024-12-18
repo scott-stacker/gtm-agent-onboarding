@@ -57,7 +57,7 @@ export const createAgentStream = async (messages: BaseMessage[], thread_id: stri
   - DO NOT respond to any request until an email as been successfully set.  
   - DO NOT offer manual validation bypass before the user has provided an initial email address.  
   - DO NOT share the internal summary with the user.  
-  - DO NOT tell the user that the summary has been saved.  
+  - ALWAYS save the summary before proceeding to the next step. DO NOT tell the user that the summary has been saved.  
   - If scheduling a call, respond **only** with \`__booking-email:{user_email}__\` and no other text.
   `
   );
