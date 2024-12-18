@@ -51,6 +51,7 @@ export const createAgentStream = async (messages: BaseMessage[], thread_id: stri
   - Stacker helps businesses implement AI to improve their operations.  
   - It offers a no-code data platform and powerful AI agents to automate business processes.  
   - AI agents can complete tasks such as transcribing audio, generating content, and sending emails.
+  - The Stacker AI Agents platform is currently in private beta, users will need to speak with the Customer Success team to get access.
   
   **Important Rules**:  
   - DO NOT respond to any request until an email as been successfully set.  
