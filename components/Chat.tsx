@@ -195,7 +195,7 @@ export function Chat() {
           ref={viewportRef}
           className="absolute inset-0 px-0 sm:px-4"
         >
-          <div>
+          <div className="pb-4 sm:pb-12">
             {messages.map((message) => renderMessage(message))}
             {isLoading &&
               messages[messages.length - 1]?.role !== "assistant" && (

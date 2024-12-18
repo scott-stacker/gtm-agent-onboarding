@@ -64,14 +64,14 @@ export const setUserEmail = tool(async (input, config: LangGraphRunnableConfig) 
 
 }, {
   name: 'set_user_email',
-  description: 'Will set the user email for the onboarding process By default, we validate the email address and reject invalid emails, free webmails and disposable emails.',
+  description: 'Set the user email for the onboarding process. This tool automatically validates the email address and rejects invalid emails, free webmails and disposable emails. You can manually bypass the validation check if required.',
   schema: z.object({
     email: z.string().describe("Email address to validate."),
     validation_bypass: z.boolean().optional().describe("If true, will bypass the validation check."),
   })
 });
 
-export const setUseCaseSummary = tool(async (input: {summary: string}, config: LangGraphRunnableConfig) => {
+export const saveUseCaseSummary = tool(async (input: {summary: string}, config: LangGraphRunnableConfig) => {
 
     const thread_id = config.configurable?.thread_id;
 
@@ -99,11 +99,11 @@ export const setUseCaseSummary = tool(async (input: {summary: string}, config: L
     }
 
 }, {
-    name: 'set_use_case_summary',
-    description: 'Save a brief use case summary in the CRM for the current lead.',
+    name: 'save_use_case_summary',
+    description: 'Save the use case summary.',
     schema: z.object({
         summary: z.string().describe("50-100 words describing the use case."),
     })
 });
 
-export const tools = [setUserEmail, setUseCaseSummary]; 
+export const tools = [setUserEmail, saveUseCaseSummary]; 
