@@ -35,9 +35,7 @@ export function InputForm({
               disabled={isLoading}
               className="rounded-full w-8 h-8 p-0 m-0"
             >
-
-                <SendIcon />
-
+              <SendIcon />
             </Button>
           </div>
         </div>

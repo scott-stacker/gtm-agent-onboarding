@@ -73,9 +73,7 @@ export function Chat() {
   const renderAssistantMessage = (message: VercelChatMessage) => {
     return (
       <div key={message.id} className="flex justify-start my-4">
-        <div className="flex-shrink-0 mr-4">
-          {renderAssistantImage()}
-        </div>
+        <div className="flex-shrink-0 mr-4">{renderAssistantImage()}</div>
         <div className={"max-w-[70%] bg-white text-black"}>
           <div className="flex items-center mb-1">
             <span className="text-gray-500">Onboarding Assistant</span>
@@ -141,7 +139,6 @@ export function Chat() {
   };
 
   const renderBookingMessage = (message: VercelChatMessage) => {
-
     const email = message.content?.includes(":")
       ? message.content.split(":")[1]?.replace("__", "")?.trim()
       : null;
@@ -149,9 +146,7 @@ export function Chat() {
     return (
       <div className="flex-col" key={message.id}>
         <div className="flex justify-start mb-4">
-          <div className="flex-shrink-0 mr-4">
-            {renderAssistantImage()}
-          </div>
+          <div className="flex-shrink-0 mr-4">{renderAssistantImage()}</div>
 
           <div className={"max-w-[70%] bg-white text-black"}>
             <div className="flex items-center mb-1">
@@ -169,7 +164,6 @@ export function Chat() {
   };
 
   const renderMessage = (message: VercelChatMessage) => {
-
     if (message.role === "system") {
       return null;
     } else if (message.content.startsWith("__b")) {
@@ -180,7 +174,6 @@ export function Chat() {
       return renderUserMessage(message);
     }
   };
-
 
   useEffect(() => {
     if (viewportRef.current) {

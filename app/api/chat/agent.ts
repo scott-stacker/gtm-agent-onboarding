@@ -12,7 +12,6 @@ const StateAnnotation = Annotation.Root({
     })
   });
 
-
 function shouldContinue(state: typeof StateAnnotation.State) {
   const messages = state.messages;
   const lastMessage = messages[messages.length - 1] as AIMessage;
@@ -22,8 +21,6 @@ function shouldContinue(state: typeof StateAnnotation.State) {
   }
   return "__end__";
 }
-
-
 
 export const createAgentStream = async (messages: BaseMessage[], thread_id: string) => {
 
@@ -77,8 +74,6 @@ export const createAgentStream = async (messages: BaseMessage[], thread_id: stri
     async function callModel(state: typeof StateAnnotation.State) {
         const messages = state.messages;
         const response = await model.invoke(messages);
-      
-      
         return { messages: [response] };
       }
     
