@@ -2,9 +2,6 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useChat } from "ai/react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-// import { ScrollArea } from "@/components/ui/scroll-a rea";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import Image from "next/image";
 import { InputForm } from "@/components/InputForm";
@@ -25,19 +22,27 @@ export function Chat() {
     },
   });
 
-  const { messages, input, isLoading, stop, handleInputChange, handleSubmit, setMessages, reload } =
-    useChat({
-      initialMessages: [
-        {
-          id: "1",
-          role: "assistant",
-          content: "Hi there, please share your email to get started!",
-        },
-      ],
-      body: {
-        thread_id: thread_id,
+  const {
+    messages,
+    input,
+    isLoading,
+    stop,
+    handleInputChange,
+    handleSubmit,
+    setMessages,
+    reload,
+  } = useChat({
+    initialMessages: [
+      {
+        id: "1",
+        role: "assistant",
+        content: "Hi there, please share your email to get started!",
       },
-    });
+    ],
+    body: {
+      thread_id: thread_id,
+    },
+  });
 
   const appendMeetingBookedMessage = () => {
     const lastMessage = messages[messages.length - 1];
@@ -54,17 +59,23 @@ export function Chat() {
     ]);
   };
 
+  const renderAssistantImage = () => {
+    return (
+      <Image
+        src="/stacker_chat_avatar.png"
+        alt="Stacker Agent"
+        width={30}
+        height={30}
+        className="rounded-full"
+      />
+    );
+  };
+
   const renderAssistantMessage = (message: any) => {
     return (
       <div key={message.id} className="flex justify-start my-4">
         <div className="flex-shrink-0 mr-4">
-          <Image
-            src="/stacker_chat_avatar.png"
-            alt="Stacker Agent"
-            width={30}
-            height={30}
-            className="rounded-full"
-          />
+          {renderAssistantImage()}
         </div>
         <div className={"max-w-[70%] bg-white text-black"}>
           <div className="flex items-center mb-1">
@@ -86,24 +97,23 @@ export function Chat() {
     );
   };
 
-  const renderLoadingSpinner = () => {
-    return (
-      null
-    );
+  const renderCalendlyLoadingSpinner = () => {
+    return null;
   };
 
   const renderCalendly = (meeting_booked: boolean, email: string) => {
     return (
       <div className="flex pl-0 pb-4 sm:pl-12">
-        <div 
+        <div
           className={`
             flex items-center border border-gray-200 rounded-lg overflow-hidden
             transition-all duration-500 ease-in-out
-            ${meeting_booked 
-              ? 'w-full max-w-[500px] h-[60px] p-4' 
-              : 'w-full max-w-[500px] h-[610px]'
+            ${
+              meeting_booked
+                ? "w-full max-w-[500px] h-[60px] p-4"
+                : "w-full max-w-[500px] h-[610px]"
             }
-          `} 
+          `}
           key="calendly"
         >
           {meeting_booked ? (
@@ -119,7 +129,7 @@ export function Chat() {
                 hideLandingPageDetails: true,
                 hideGdprBanner: true,
               }}
-              LoadingSpinner={renderLoadingSpinner}
+              LoadingSpinner={renderCalendlyLoadingSpinner}
               styles={{
                 height: "100%",
                 width: "100%",
@@ -132,29 +142,24 @@ export function Chat() {
   };
 
   const renderBookingMessage = (message: any) => {
-    //remove the __ suffix and split the email
-    const email = message.content?.includes(":") 
-      ? message.content.split(":")[1]?.replace("__", "")?.trim() 
+    const email = message.content?.includes(":")
+      ? message.content.split(":")[1]?.replace("__", "")?.trim()
       : null;
 
     return (
       <div className="flex-col" key={message.id}>
         <div className="flex justify-start mb-4">
           <div className="flex-shrink-0 mr-4">
-            <Image
-              src="/stacker_chat_avatar.png"
-              alt="Stacker Agent"
-              width={30}
-              height={30}
-              className="rounded-full"
-            />
+            {renderAssistantImage()}
           </div>
-    
+
           <div className={"max-w-[70%] bg-white text-black"}>
             <div className="flex items-center mb-1">
               <span className="text-gray-500">Onboarding Assistant</span>
             </div>
-            <p className="whitespace-pre-wrap">Great, please select a time for your onboarding call:</p>
+            <p className="whitespace-pre-wrap">
+              Great, please select a time for your onboarding call:
+            </p>
           </div>
         </div>
 
@@ -175,7 +180,7 @@ export function Chat() {
     }
   };
 
-  // Scroll to bottom whenever messages change
+
   useEffect(() => {
     if (viewportRef.current) {
       viewportRef.current.scrollTop = viewportRef.current.scrollHeight;
@@ -185,20 +190,17 @@ export function Chat() {
   return (
     <div className="flex flex-col flex-1 min-h-0 px-4 pb-4 sm:pb-8">
       <ScrollArea.Root className="relative flex-1 min-h-0">
-        <ScrollArea.Viewport ref={viewportRef} className="absolute inset-0 px-0 sm:px-4">
+        <ScrollArea.Viewport
+          ref={viewportRef}
+          className="absolute inset-0 px-0 sm:px-4"
+        >
           <div>
             {messages.map((message) => renderMessage(message))}
             {isLoading &&
               messages[messages.length - 1]?.role !== "assistant" && (
                 <div className="flex items-center justify-start mb-4">
                   <div className="flex-shrink-0 mr-4">
-                    <Image
-                      src="/stacker_chat_avatar.png"
-                      alt="Stacker Agent"
-                      width={30}
-                      height={30}
-                      className="rounded-full"
-                    />
+                    {renderAssistantImage()}
                   </div>
                   <div className="flex items-center">
                     <p className="thinking-gradient">Thinking...</p>
