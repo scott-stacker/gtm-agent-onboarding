@@ -39,7 +39,7 @@ function shouldContinue(state: typeof StateAnnotation.State) {
 
 
 
-export const createAgentStream = async (messages: any, thread_id: string) => {
+export const createAgentStream = async (messages: BaseMessage[], thread_id: string) => {
 
     const systemPrompt = new SystemMessage(
       "You are a helpful assistant that is onboarding a new user to Stacker, a software platform that help businesses implement AI to improve their operations. " +

@@ -8,7 +8,8 @@ import { InputForm } from "@/components/InputForm";
 import { useCalendlyEventListener, InlineWidget } from "react-calendly";
 import { v4 as uuidv4 } from "uuid";
 import { CalendarCheck } from "lucide-react";
-
+import { BaseMessage, AIMessage, HumanMessage, SystemMessage } from "@langchain/core/messages";
+import { Message as VercelChatMessage } from "ai";
 export function Chat() {
   const [thread_id] = useState(() => uuidv4());
   const [meeting_booked, setMeetingBooked] = useState(false);
@@ -26,7 +27,6 @@ export function Chat() {
     messages,
     input,
     isLoading,
-    stop,
     handleInputChange,
     handleSubmit,
     setMessages,
@@ -71,7 +71,7 @@ export function Chat() {
     );
   };
 
-  const renderAssistantMessage = (message: any) => {
+  const renderAssistantMessage = (message: VercelChatMessage) => {
     return (
       <div key={message.id} className="flex justify-start my-4">
         <div className="flex-shrink-0 mr-4">
@@ -81,17 +81,17 @@ export function Chat() {
           <div className="flex items-center mb-1">
             <span className="text-gray-500">Onboarding Assistant</span>
           </div>
-          <p className="whitespace-pre-wrap">{message.content}</p>
+          <p className="whitespace-pre-wrap">{String(message.content)}</p>
         </div>
       </div>
     );
   };
 
-  const renderUserMessage = (message: any) => {
+  const renderUserMessage = (message: VercelChatMessage) => {
     return (
       <div key={message.id} className="flex justify-end my-4">
         <div className="max-w-[70%] bg-gray-200 text-black py-3 px-4 rounded-2xl">
-          <p>{message.content}</p>
+          <p>{String(message.content)}</p>
         </div>
       </div>
     );
@@ -101,7 +101,7 @@ export function Chat() {
     return null;
   };
 
-  const renderCalendly = (meeting_booked: boolean, email: string) => {
+  const renderCalendly = (meeting_booked: boolean, email: string | null) => {
     return (
       <div className="flex pl-0 pb-4 sm:pl-12">
         <div
@@ -141,9 +141,12 @@ export function Chat() {
     );
   };
 
-  const renderBookingMessage = (message: any) => {
-    const email = message.content?.includes(":")
-      ? message.content.split(":")[1]?.replace("__", "")?.trim()
+  const renderBookingMessage = (message: VercelChatMessage) => {
+
+    const messageContent = message.content as string;
+
+    const email = messageContent?.includes(":")
+      ? messageContent.split(":")[1]?.replace("__", "")?.trim()
       : null;
 
     return (
@@ -168,7 +171,8 @@ export function Chat() {
     );
   };
 
-  const renderMessage = (message: any) => {
+  const renderMessage = (message: VercelChatMessage) => {
+
     if (message.role === "system") {
       return null;
     } else if (message.content.startsWith("__b")) {
@@ -218,7 +222,6 @@ export function Chat() {
         isLoading={isLoading}
         handleInputChange={handleInputChange}
         handleSubmit={handleSubmit}
-        stop={stop}
       />
     </div>
   );

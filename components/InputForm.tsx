@@ -8,7 +8,6 @@ interface InputFormProps {
   isLoading: boolean;
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (e: React.FormEvent) => void;
-  stop: () => void;
 }
 
 export function InputForm({
@@ -16,7 +15,6 @@ export function InputForm({
   isLoading,
   handleInputChange,
   handleSubmit,
-  stop
 }: InputFormProps) {
   return (
     <div className="px-0">
