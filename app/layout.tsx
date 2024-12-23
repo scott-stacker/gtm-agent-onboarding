@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Image from "next/image";
+import { PostHogProvider } from './providers'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,9 @@ export default function RootLayout({
           <Image src="/logo.svg" alt="Company Logo" width={120} height={100} />
         </header>
         <main className="flex flex-1 flex-col w-full max-w-[1000px] mx-auto">
-          {children}
+          <PostHogProvider>
+            {children}
+          </PostHogProvider>
         </main>
       </body>
     </html>
